@@ -1,5 +1,33 @@
 ## Full Stack Evliion app to find near by EV charging stations and/or battery swapping stations
 
+## API calls
+## 1 Register
+
+POST http://evcharge-dev.us-east-1.elasticbeanstalk.com/api/auth/signup
+HTTP Header : Content-Type -> application/json
+Request Body:
+{
+ "name":"Amit Dandawate",
+ "username":"amitda",
+ "email":"amit.dandawate@gmail.com",
+ "password":"Test@123"
+}
+
+Response:
+Success:
+HTTP Status code - 201
+{
+    "success": true,
+    "message": "User registered successfully"
+}
+
+Fail:
+HTTP Status code - 400
+{
+    "success": false,
+    "message": "Email Address already in use!"
+}
+
 ## Built with 
 
 1. **Spring Boot**
