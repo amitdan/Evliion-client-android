@@ -7,10 +7,10 @@ POST http://evcharge-dev.us-east-1.elasticbeanstalk.com/api/auth/signup
 HTTP Header : Content-Type -> application/json
 Request Body:
 {
- "name":"Amit Dandawate",
- "username":"amitda",
- "email":"amit.dandawate@gmail.com",
- "password":"Test@123"
+ "name":"Tesr",
+ "username":"tda",
+ "email":"tesrr@gmail.com",
+ "password":"Tstgg@123"
 }
 
 
