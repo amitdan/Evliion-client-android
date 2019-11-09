@@ -6,28 +6,33 @@
 POST http://evcharge-dev.us-east-1.elasticbeanstalk.com/api/auth/signup
 HTTP Header : Content-Type -> application/json
 Request Body:
+```bash
 {
  "name":"Amit Dandawate",
  "username":"amitda",
  "email":"amit.dandawate@gmail.com",
  "password":"Test@123"
 }
+```
 
 Response:
 Success:
 HTTP Status code - 201
+```bash
 {
     "success": true,
     "message": "User registered successfully"
 }
+```
 
 Fail:
 HTTP Status code - 400
+```bash
 {
     "success": false,
     "message": "Email Address already in use!"
 }
-
+```
 ## Built with 
 
 1. **Spring Boot**
