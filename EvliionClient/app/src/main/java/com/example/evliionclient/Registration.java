@@ -16,6 +16,7 @@ import java.net.URL;
 
 public class Registration extends AppCompatActivity {
     String name;
+    String username;
     String email;
     String phone;
     String password;
@@ -29,19 +30,21 @@ public class Registration extends AppCompatActivity {
 
     public void createAcc(View view){
         EditText nameText = findViewById(R.id.editName);
+        EditText usernameText = findViewById(R.id.editUsername);
         EditText emailText = findViewById(R.id.editEmail);
         EditText phoneText = findViewById(R.id.editPhone);
         EditText passwordText = findViewById(R.id.editPassword);
 
         name = nameText.getText().toString();
+        username = usernameText.getText().toString();
         email = emailText.getText().toString();
         phone = phoneText.getText().toString();
         password = passwordText.getText().toString();
 
-        sendPost(name, email, phone, password);
+        sendPost(name, username, email, password);
     }
 
-    public void sendPost(final String na, final String em, final String ph, final String pass) {
+    public void sendPost(final String na, final String user, final String em, final String pass) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -56,7 +59,7 @@ public class Registration extends AppCompatActivity {
 
                     JSONObject jsonParam = new JSONObject();
                     jsonParam.put("name", na);
-                    //jsonParam.put("username", "tda");
+                    jsonParam.put("username", user);
                     jsonParam.put("email", em);
                     jsonParam.put("password", pass);
 
