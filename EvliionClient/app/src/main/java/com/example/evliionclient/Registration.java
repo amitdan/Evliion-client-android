@@ -4,14 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
+import org.json.JSONObject;
+
+import java.io.DataOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class Registration extends AppCompatActivity {
     String name;
     String email;
     String phone;
     String password;
+    String urlAdress = "http://evcharge-dev.us-east-1.elasticbeanstalk.com/api/auth/signup";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +38,46 @@ public class Registration extends AppCompatActivity {
         phone = phoneText.getText().toString();
         password = passwordText.getText().toString();
 
-        System.out.println(name + " " + email + " " + phone + " " + password);
+        sendPost(name, email, phone, password);
+    }
+
+    public void sendPost(final String na, final String em, final String ph, final String pass) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL(urlAdress);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Content-Type", "application/json");
+                    conn.setRequestProperty("Accept","application/json");
+                    conn.setDoOutput(true);
+                    conn.setDoInput(true);
+
+                    JSONObject jsonParam = new JSONObject();
+                    jsonParam.put("name", na);
+                    //jsonParam.put("username", "tda");
+                    jsonParam.put("email", em);
+                    jsonParam.put("password", pass);
+
+                    Log.i("JSON", jsonParam.toString());
+                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                    //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
+                    os.writeBytes(jsonParam.toString());
+
+                    os.flush();
+                    os.close();
+
+                    Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                    Log.i("MSG" , conn.getResponseMessage());
+
+                    conn.disconnect();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
     }
 }
