@@ -15,39 +15,33 @@ import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Registration extends AppCompatActivity {
-    String name;
-    String username;
-    String email;
-    String phone;
+public class Login extends AppCompatActivity {
+    String usernameOrEmail;
     String password;
     String urlAdress = "http://evcharge-dev.us-east-1.elasticbeanstalk.com/api/auth/signup";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registration);
+        setContentView(R.layout.login);
     }
 
-    public void createAcc(View view){
-        EditText nameText = findViewById(R.id.editName);
+    public void loginAcc(View view){
         EditText usernameText = findViewById(R.id.editUsername);
-        EditText emailText = findViewById(R.id.editEmail);
-        EditText phoneText = findViewById(R.id.editPhone);
         EditText passwordText = findViewById(R.id.editPassword);
 
-        name = nameText.getText().toString();
-        username = usernameText.getText().toString();
-        email = emailText.getText().toString();
-        phone = phoneText.getText().toString();
+        usernameOrEmail = usernameText.getText().toString();
         password = passwordText.getText().toString();
 
-        sendPost(name, username, email, password);
+        sendPost(usernameOrEmail, password);
 
-        Toast.makeText(this, "Sign Up Successful!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, AddVehicle.class);
+        startActivity(intent);
     }
 
-    public void sendPost(final String na, final String user, final String em, final String pass) {
+    public void sendPost(final String user, final String pass) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -61,9 +55,7 @@ public class Registration extends AppCompatActivity {
                     conn.setDoInput(true);
 
                     JSONObject jsonParam = new JSONObject();
-                    jsonParam.put("name", na);
-                    jsonParam.put("username", user);
-                    jsonParam.put("email", em);
+                    jsonParam.put("usernameOrEmail", user);
                     jsonParam.put("password", pass);
 
                     Log.i("JSON", jsonParam.toString());
