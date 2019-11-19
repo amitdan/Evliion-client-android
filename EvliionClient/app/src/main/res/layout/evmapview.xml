@@ -12,7 +12,8 @@
         android:layout_marginBottom="10dp"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/done"
+        android:onClick="done"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:text="Done" />

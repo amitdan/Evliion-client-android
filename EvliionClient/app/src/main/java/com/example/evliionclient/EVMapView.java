@@ -36,6 +36,12 @@ public class EVMapView extends AppCompatActivity implements OnMapReadyCallback {
         initGoogleMap(savedInstanceState);
     }
 
+    public void done(View view) {
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+    }
+
     private void initGoogleMap(Bundle savedInstanceState) {
         // *** IMPORTANT ***
         // MapView requires that the Bundle you pass contain _ONLY_ MapView SDK
