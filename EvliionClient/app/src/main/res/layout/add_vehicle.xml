@@ -40,5 +40,16 @@
         android:layout_marginTop="30dp"
         android:layout_gravity="center"/>
 
+    <Button
+        android:id="@+id/addVehicle"
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/holo_green_dark"
+        android:text="ADD"
+        android:textStyle="bold"
+        android:onClick="addVehicle"/>
+
 
 </LinearLayout>
