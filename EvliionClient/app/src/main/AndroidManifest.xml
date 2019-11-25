@@ -14,10 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Login"/>
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Login" />
         <activity android:name=".Registration" />
-        <activity android:name=".AddVehicle"/>
-        <activity android:name=".EVMapView"/>
+        <activity android:name=".AddVehicle" />
+        <activity android:name=".EVMapView" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCbwLrsR-KpwPHqWIrqS-_WdOFfPG1BH8w" />
