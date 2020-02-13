@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                tools:text="hgjhghgj"
+                tools:text="CCD Koramangala"
 
                 style="@style/labelValues"
                 android:layout_gravity="center_vertical">
@@ -105,7 +105,43 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                tools:text="hgjhghgj"
+                tools:text="Mahindra E20"
+
+                style="@style/labelValues"
+                android:layout_gravity="center_vertical">
+
+            </TextView>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2"
+            android:background="#FFFFFF"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:padding="10dp"
+            >
+
+            <TextView
+                style="@style/TextviewStyleBase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Expected time to charge"
+                android:textSize="16sp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                tools:text="70 mins"
 
                 style="@style/labelValues"
                 android:layout_gravity="center_vertical">
@@ -115,6 +151,7 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -122,6 +159,77 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/selectDateLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/labelValues"
+                    android:text="Select Date"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="3"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin">
+
+                    <TextView
+                        android:id="@+id/day"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="day"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        android:background="#fff"
+                        android:textColor="#70B26C"
+
+                        />
+                    <TextView
+                        android:id="@+id/month"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="month"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        android:background="#fff"
+                        android:textColor="#70B26C"
+
+                        />
+                    <TextView
+                        android:id="@+id/year"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="year"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        android:background="#fff"
+                        android:textColor="#70B26C"
+
+                        />
+
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/selectTimeLL"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
 
@@ -144,13 +252,15 @@
                     android:orientation="horizontal"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:weightSum="4">
+                    android:weightSum="3">
 
-                    <Button
+                    <TextView
+                        android:id="@+id/selectedHours"
+                        android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
-                        android:text="+"
+                        android:text="07"
                         android:textSize="20sp"
                         android:background="#fff"
                         android:textColor="#70B26C"/>
@@ -158,10 +268,11 @@
 
 
                     <TextView
+                        android:id="@+id/selectedMinutes"
                         android:layout_width="0dp"
-                        android:layout_weight="2"
+                        android:layout_weight="1"
                         android:layout_height="match_parent"
-                        android:text="1 hour 30 min"
+                        android:text="30"
                         android:gravity="center"
                         android:background="#fff"
                         android:textColor="#70B26C"
@@ -172,11 +283,12 @@
 
                     </TextView>
 
-                    <Button
+                    <TextView
+                        android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
-                        android:text="-"
+                        android:text="PM"
                         android:background="#fff"
                         android:textColor="#70B26C"
                         android:textSize="20sp"/>
@@ -212,12 +324,13 @@
                     </TextView>
 
                     <View android:layout_height="match_parent"
-                        android:layout_width="3dp"/>
+                        android:layout_width="10dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="$50"
+
                         style="@style/labelValues">
 
                     </TextView>
@@ -226,7 +339,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="START CHARGING"
+                    android:text="Process to pay"
                     style="@style/ButtonStyles">
 
                 </Button>
