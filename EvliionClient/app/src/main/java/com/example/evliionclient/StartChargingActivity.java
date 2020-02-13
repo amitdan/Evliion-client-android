@@ -43,7 +43,7 @@ public class StartChargingActivity extends AppCompatActivity {
         monthTV = (TextView) findViewById(R.id.month);
 
 
-        yearTV.setText("Hello");
+
 
 
         selectTime.setOnClickListener(new View.OnClickListener() {
