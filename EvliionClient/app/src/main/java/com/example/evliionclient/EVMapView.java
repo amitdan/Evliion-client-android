@@ -16,6 +16,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
@@ -89,22 +90,31 @@ public class EVMapView extends AppCompatActivity implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap map) {
+        map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Intent intent = new Intent(EVMapView.this, StartChargingActivity.class);
+                intent.putExtra("stationName", marker.getTitle());
+                startActivity(intent);
+            }
+        });
         // Preliminary Markers
-        map.addMarker(new MarkerOptions().position(new LatLng(34.2493596, -118.3847136)).title("Marker"));
-        map.addMarker(new MarkerOptions().position(new LatLng(35.2493596, -111.3837136)).title("Marker"));
-        map.addMarker(new MarkerOptions().position(new LatLng(35.249996, -112.3871436)).title("Marker"));
-        map.addMarker(new MarkerOptions().position(new LatLng(35.2496696, -113.3873136)).title("Marker"));
-        map.addMarker(new MarkerOptions().position(new LatLng(35.2495596, -114.3874136)).title("Marker"));
-        map.addMarker(new MarkerOptions().position(new LatLng(35.249996, -115.3871336)).title("Marker"));
-        map.addMarker(new MarkerOptions().position(new LatLng(35.249896, -116.3871336)).title("Marker"));
-        map.addMarker(new MarkerOptions().position(new LatLng(35.249796, -117.3871336)).title("Marker"));
-        map.addMarker(new MarkerOptions().position(new LatLng(35.249696, -117.3871336)).title("Marker"));
-        map.addMarker(new MarkerOptions().position(new LatLng(35.249596, -117.3871336)).title("Marker"));
-        map.addMarker(new MarkerOptions().position(new LatLng(35.249496, -116.3871336)).title("Marker"));
+        map.addMarker(new MarkerOptions().position(new LatLng(34.2493596, -118.3847136)).title("Marker1"));
+        map.addMarker(new MarkerOptions().position(new LatLng(35.2493596, -111.3837136)).title("Marker2"));
+        map.addMarker(new MarkerOptions().position(new LatLng(35.249996, -112.3871436)).title("Marker3"));
+        map.addMarker(new MarkerOptions().position(new LatLng(35.2496696, -113.3873136)).title("Marker4"));
+        map.addMarker(new MarkerOptions().position(new LatLng(35.2495596, -114.3874136)).title("Marker5"));
+        map.addMarker(new MarkerOptions().position(new LatLng(35.249996, -115.3871336)).title("Marker6"));
+        map.addMarker(new MarkerOptions().position(new LatLng(35.249896, -116.3871336)).title("Marker7"));
+        map.addMarker(new MarkerOptions().position(new LatLng(35.249796, -117.3871336)).title("Marker8"));
+        map.addMarker(new MarkerOptions().position(new LatLng(35.249696, -117.3871336)).title("Marker9"));
+        map.addMarker(new MarkerOptions().position(new LatLng(35.249596, -117.3871336)).title("Marker10"));
+        map.addMarker(new MarkerOptions().position(new LatLng(35.249496, -116.3871336)).title("Marker11"));
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         map.setMyLocationEnabled(true);
+
     }
 
     @Override

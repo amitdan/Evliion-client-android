@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -21,15 +22,19 @@ import java.util.Calendar;
 public class StartChargingActivity extends AppCompatActivity {
 
 
-    private TextView selectedHours, selectedMinutes, yearTV, monthTV, dayTV, amPmTV;
+    private TextView selectedHours, selectedMinutes, yearTV, monthTV, dayTV, amPmTV, sName;
     private TimePickerDialog timePickerDialog;
     private DatePickerDialog datePickerDialog;
+    private String stationName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start_charging);
 
+        Intent intent = getIntent();
+        stationName = intent.getStringExtra("stationName");
+
+        setContentView(R.layout.activity_start_charging);
 
         LinearLayout selectTime = (LinearLayout) findViewById(R.id.selectTimeLL);
         LinearLayout selectDate = (LinearLayout) findViewById(R.id.selectDateLL);
@@ -41,8 +46,8 @@ public class StartChargingActivity extends AppCompatActivity {
         yearTV = (TextView) findViewById(R.id.year);
         dayTV = (TextView) findViewById(R.id.day);
         monthTV = (TextView) findViewById(R.id.month);
-
-
+        sName = (TextView)findViewById(R.id.sname);
+        sName.setText(stationName);
 
 
 
