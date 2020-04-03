@@ -14,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -22,10 +23,11 @@ import java.util.Calendar;
 public class StartChargingActivity extends AppCompatActivity {
 
 
-    private TextView selectedHours, selectedMinutes, yearTV, monthTV, dayTV, amPmTV, sName;
+    private TextView selectedHours, selectedMinutes, yearTV, monthTV, dayTV, amPmTV, sName, vInfo;
     private TimePickerDialog timePickerDialog;
     private DatePickerDialog datePickerDialog;
-    private String stationName;
+    private String stationName, vmodel, vmake, vtype;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,12 @@ public class StartChargingActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         stationName = intent.getStringExtra("stationName");
+        vmodel = intent.getStringExtra("VMODEL");
+        vmake = intent.getStringExtra("VMAKE");
+        vtype = intent.getStringExtra("VTYPE");
+        String vMessage = String.format("Type: %s \n Made by: %s \n Model: %s",vtype, vmake, vmodel);
+        //Toast.makeText(this, vMessage, Toast.LENGTH_LONG).show();
+
 
         setContentView(R.layout.activity_start_charging);
 
@@ -47,7 +55,10 @@ public class StartChargingActivity extends AppCompatActivity {
         dayTV = (TextView) findViewById(R.id.day);
         monthTV = (TextView) findViewById(R.id.month);
         sName = (TextView)findViewById(R.id.sname);
+        vInfo = (TextView)findViewById(R.id.vInfo);
         sName.setText(stationName);
+        vInfo.setText(vMessage);
+
 
 
 

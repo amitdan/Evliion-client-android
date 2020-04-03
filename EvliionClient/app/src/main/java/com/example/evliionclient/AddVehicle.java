@@ -28,10 +28,13 @@ public class AddVehicle extends AppCompatActivity {
     public void addVehicle(View view) {
         type = String.valueOf(spinner1.getSelectedItem());
         make = String.valueOf(spinner2.getSelectedItem());
-        type = String.valueOf(spinner3.getSelectedItem());
+        model = String.valueOf(spinner3.getSelectedItem());
         Toast.makeText(this, "Vehicle Added!", Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, EVMapView.class);
+        intent.putExtra("VTYPE",type );
+        intent.putExtra("VMAKE", make);
+        intent.putExtra("VMODEL",model);
         startActivity(intent);
     }
 

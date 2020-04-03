@@ -29,9 +29,18 @@ public class EVMapView extends AppCompatActivity implements OnMapReadyCallback {
 
     private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
 
+    private String vmake, vtype, vmodel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent intent = getIntent();
+        vmodel = intent.getStringExtra("VMODEL");
+        vmake = intent.getStringExtra("VMAKE");
+        vtype = intent.getStringExtra("VTYPE");
+        //String vmessage = String.format("A %s vehicle made by %s of model %s is added!",vtype, vmake, vmodel);
+        //Toast.makeText(this, vmessage, Toast.LENGTH_LONG).show();
+
         setContentView(R.layout.evmapview);
 
         initGoogleMap(savedInstanceState);
@@ -95,6 +104,9 @@ public class EVMapView extends AppCompatActivity implements OnMapReadyCallback {
             public void onInfoWindowClick(Marker marker) {
                 Intent intent = new Intent(EVMapView.this, StartChargingActivity.class);
                 intent.putExtra("stationName", marker.getTitle());
+                intent.putExtra("VMODEL", vmodel);
+                intent.putExtra("VTYPE",vtype);
+                intent.putExtra("VMAKE", vmake);
                 startActivity(intent);
             }
         });
