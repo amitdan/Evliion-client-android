@@ -106,6 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
+                android:id="@+id/vInfo"
                 tools:text="Mahindra E20"
 
                 style="@style/labelValues"
@@ -342,6 +343,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Process to pay"
+                    android:id="@+id/payButton"
                     style="@style/ButtonStyles">
 
                 </Button>

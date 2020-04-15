@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,6 +28,9 @@ public class StartChargingActivity extends AppCompatActivity {
     private TimePickerDialog timePickerDialog;
     private DatePickerDialog datePickerDialog;
     private String stationName, vmodel, vmake, vtype;
+    private Button payButton;
+    private String amount_to_pay;
+
 
 
     @Override
@@ -58,6 +62,9 @@ public class StartChargingActivity extends AppCompatActivity {
         vInfo = (TextView)findViewById(R.id.vInfo);
         sName.setText(stationName);
         vInfo.setText(vMessage);
+
+
+        payButton = (Button) findViewById(R.id.payButton);
 
 
 
@@ -107,6 +114,15 @@ public class StartChargingActivity extends AppCompatActivity {
                     }
                 }, year, month, day);
                 datePickerDialog.show();
+            }
+        });
+
+        payButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(StartChargingActivity.this, PaymentActivity.class);
+                amount_to_pay = "50 dollars";
+                intent.putExtra("PAY_AMOUNT", amount_to_pay);
+                startActivity(intent);
             }
         });
     }
