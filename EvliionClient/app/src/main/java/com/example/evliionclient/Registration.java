@@ -23,6 +23,7 @@ public class Registration extends AppCompatActivity {
     String password;
     String urlAdress = "http://evcharge-dev.us-east-1.elasticbeanstalk.com/api/auth/signup";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,12 @@ public class Registration extends AppCompatActivity {
         sendPost(name, username, email, password);
 
         Toast.makeText(this, "Sign Up Successful!", Toast.LENGTH_SHORT).show();
+
+        // If successful then go to OTP screen
+
+        Intent intent = new Intent(Registration.this, OtpActivity.class);
+        startActivity(intent);
+
     }
 
     public void sendPost(final String na, final String user, final String em, final String pass) {
